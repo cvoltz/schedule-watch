@@ -17,8 +17,10 @@
 
 require "bundler"
 Bundler.require
+require "yaml"
 
 VERSION = "0.01"
+CONFIG_FILENAME = File.expand_path("~/.watch-schedule.yml")
 
 def print_version
   puts <<-EOS.gsub!(/^\s*/, "")
@@ -30,6 +32,39 @@ def print_version
   EOS
 end
 
-if File.identical?(__FILE__, $PROGRAM_NAME)
+def credentials_from_config_file
+  if File.exists?(CONFIG_FILENAME)
+    YAML.load_file(CONFIG_FILENAME)
+  else
+    {}
+  end
+end
+
+def credentials_from_environment
+  {
+    username: ENV["WATCH_SCHEDULE_USERNAME"],
+    password: ENV["WATCH_SCHEDULE_PASSWORD"],
+  }
+end
+
+def credentials
+  credentials_from_config_file.
+    merge(credentials_from_environment) { |_, config, env| env || config }.
+    fetch_values(:username, :password)
+end
+
+def main
   print_version
+
+  username, password = credentials
+  if username.nil? || password.nil?
+    fail "Credentials must be specified"
+  end
+rescue RuntimeError => error
+  puts "Error: #{error.message}"
+  exit false
+end
+
+if File.identical?(__FILE__, $PROGRAM_NAME)
+  main
 end
