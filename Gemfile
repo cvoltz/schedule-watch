@@ -4,3 +4,8 @@ source "https://rubygems.org"
 ruby "~> 2.3.1"
 
 gem "mechanize"
+
+group :test do
+  gem "aruba"
+  gem "rspec"
+end

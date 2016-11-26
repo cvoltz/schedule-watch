@@ -1,0 +1,10 @@
+--color
+--format progress
+
+--format documentation
+--out artifacts/specs.txt
+
+--format html
+--out artifacts/specs.html
+
+--require spec_helper
