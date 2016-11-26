@@ -40,3 +40,5 @@ end
 
 require "simplecov"
 SimpleCov.command_name "RSpec"
+
+require_relative "../watch-schedule"
