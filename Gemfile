@@ -8,4 +8,7 @@ gem "mechanize"
 group :test do
   gem "aruba"
   gem "rspec"
+  gem "simplecov"
+  gem "simplecov-html"
+  gem "simplecov-rcov"
 end

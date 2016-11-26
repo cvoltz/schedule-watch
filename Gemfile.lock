@@ -24,12 +24,14 @@ GEM
       gherkin (~> 4.0)
     cucumber-wire (0.0.1)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     domain_name (0.5.20161021)
       unf (>= 0.0.5, < 1.0.0)
     ffi (1.9.14)
     gherkin (4.0.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    json (2.0.2)
     mechanize (2.7.5)
       domain_name (~> 0.5, >= 0.5.1)
       http-cookie (~> 1.0)
@@ -61,6 +63,13 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
+    simplecov (0.12.0)
+      docile (~> 1.1.0)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
+    simplecov-rcov (0.2.3)
+      simplecov (>= 0.4.1)
     thor (0.19.1)
     unf (0.1.4)
       unf_ext
@@ -74,6 +83,9 @@ DEPENDENCIES
   aruba
   mechanize
   rspec
+  simplecov
+  simplecov-html
+  simplecov-rcov
 
 RUBY VERSION
    ruby 2.3.1p112

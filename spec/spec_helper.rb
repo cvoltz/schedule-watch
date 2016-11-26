@@ -37,3 +37,6 @@ end
 Dir.glob(File.expand_path("../support/**/*.rb", __FILE__)).each do |file|
   require_relative file
 end
+
+require "simplecov"
+SimpleCov.command_name "RSpec"
